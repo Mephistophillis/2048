@@ -1,7 +1,8 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+// import breakpoint from 'styled-breakpoints'
 
-class Field extends PureComponent {
+class Field extends React.Component {
   static defaultProps = {
     matrix: [[]],
   }
@@ -31,9 +32,9 @@ class Field extends PureComponent {
 }
 
 const FieldTag = styled.div`
-  height: 475px;
+  /* height: 100%; */
   position: relative;
-  width: 475px;
+  min-width: 290px;
 `
 
 const Background = styled.div`
@@ -63,7 +64,6 @@ const BackgroundCell = styled.div`
 `
 
 const Cell = BackgroundCell.extend`
-
   transform: translate(${({ x }) => x * 110}px, ${({ y }) => y * 110}px);
   text-align: center;
   line-height: 100px;
@@ -90,7 +90,7 @@ const calculateBackgroundColor = value => {
   const step = Math.min(16, Math.log2(value))
   return `hsl(0, ${calculateSaturation(step)}%, ${calculateLightness(step)}%);`
 }
-const calculateSaturation = step => Math.floor(100 / 16 * step)
-const calculateLightness = step => 100 - Math.floor(50 / 16 * step)
+const calculateSaturation = step => Math.floor((100 / 16) * step)
+const calculateLightness = step => 100 - Math.floor((50 / 16) * step)
 
 export default Field

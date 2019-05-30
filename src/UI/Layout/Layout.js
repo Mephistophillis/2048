@@ -15,17 +15,19 @@ class Layout extends PureComponent {
 const Main = styled.main`
   align-items: center;
   display: flex;
-  height: 100%;
   justify-content: center;
-  width: 100%;
 `
 
 const Content = styled.div`
-  min-height: 600px;
-  width: 600px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ::only-child {
+    width: 50px;
+    height: 50px;
+  }
 `
 
 export default Layout
